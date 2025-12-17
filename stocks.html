@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Акции — Магия Вкуса</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">🍰 Магия Вкуса</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Главная</a></li>
+            <li><a href="about.html">О нас</a></li>
+            <li><a href="catalog.html">Каталог</a></li>
+            <li><a href="stocks.html">Акции</a></li>
+            <li><a href="delivery.html">Доставка</a></li>
+            <li><a href="reviews.html">Отзывы</a></li>
+            <li><a href="contacts.html">Режим работы</a></li>
+        </ul>
+    </nav>
+    </div>            
+    <section class="stocks" id="stocks">
+    <h2>Наши Акции</h2>
+    <div class="slider-container">
+        <div class="slides">
+            <div class="slide active">
+                <div class="slide-image">
+                    <img src="images/dr.jpg" alt="День рождения">
+                    <div class="sale-badge">-20%</div>
+                </div>
+                <div class="slide-text">
+                    <h3>"День рождения"</h3>
+                    <p>Празднуйте с нами! Скидка действует в день рождения и 3 дня после.</p>
+                </div>
+            </div>
+
+            <div class="slide">
+                <div class="slide-image">
+                    <img src="images/calendar.jpg" alt="Календарь скидок">
+                    <div class="sale-badge">-10%</div>
+                </div>
+                <div class="slide-text">
+                    <h3>"Календарь скидок"</h3>
+                    <ul class="promo-list">
+                        <li><span>Пн-Вт:</span> -10% на торты</li>
+                        <li><span>Ср-Пт:</span> -10% на булочки</li>
+                        <li><span>Сб-Вс:</span> -10% на пирожные</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="slide">
+                <div class="slide-image">
+                    <img src="images/watch.jpg" alt="Счастливые часы">
+                    <div class="sale-badge">-50%</div>
+                </div>
+                <div class="slide-text">
+                    <h3>"Счастливые часы"</h3>
+                    <p>Каждый день после 18:00 вся свежая выпечка за полцены!</p>
+                </div>
+            </div>
+        </div>
+
+        <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
+        <button class="next" onclick="changeSlide(1)">&#10095;</button>
+    </div>
+</section>
+<script>
+    let currentSlide = 0;
+const slides = document.querySelectorAll('.slide');
+
+function changeSlide(direction) {
+    slides[currentSlide].classList.remove('active');
+    currentSlide = (currentSlide + direction + slides.length) % slides.length;
+    slides[currentSlide].classList.add('active');
+}
+
+// Автопереключение каждые 5 секунд
+setInterval(() => changeSlide(1), 5000);
+</script>
+</body>
+</html>
