@@ -55,7 +55,7 @@ section {
 .nav-links a:hover {
     color: #ac9362;
 }
-@media (max-width: 900px) {
+/* @media (max-width: 900px) {
     .navbar {
         flex-direction: column;
         align-items: flex-start;
@@ -72,7 +72,7 @@ section {
         font-size: 20px;
         margin-bottom: 5px;
     }
-}
+} */
 .hero {
     background: url('images/main.jpg') center/cover no-repeat;
     color: white;
@@ -371,11 +371,63 @@ section {
     font-size: 14px;
     opacity: 0.8;
 }
-/* Адаптивность */
-@media (max-width: 768px) {
-    .hero h1 { font-size: 42px; }
-    section { padding: 60px 5%; }
-    .about-container { flex-direction: column; text-align: center; }
-    .nav-links { display: none; }
+/* Стили для бургер-иконки (по умолчанию скрыта) */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
 }
 
+.menu-toggle .bar {
+    width: 25px;
+    height: 3px;
+    background-color: #ac9362;
+    margin: 4px 0;
+    transition: 0.4s;
+}
+/* Адаптив для мобильных устройств */
+@media screen and (max-width: 768px) {
+    /* Скрываем обычное горизонтальное меню */
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%; /* Полностью прячем за правый край */
+        height: 100vh; /* На всю высоту экрана */
+        width: 50%;    /* Ширина выезжающего меню */
+        background-color: beige; /* Темный фон */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transition: right 0.4s ease; /* Плавный выезд */
+        z-index: 1001;
+        box-shadow: -5px 0 15px rgba(0,0,0,0.5);
+    }
+
+    /* Класс, который добавляет JavaScript при клике */
+    .nav-links.active {
+        right: 0 !important; /* Принудительно выкатываем меню */
+    }
+
+    .nav-links li {
+        margin: 20px 0;
+    }
+
+    /* Показываем бургер-кнопку */
+    .menu-toggle {
+        display: flex !important;
+        z-index: 1002;
+    }
+}
+/* Анимация превращения в крестик */
+#mobile-menu.is-active .bar:nth-child(2) {
+    opacity: 0;
+}
+
+#mobile-menu.is-active .bar:nth-child(1) {
+    transform: translateY(11px) rotate(45deg);
+}
+
+#mobile-menu.is-active .bar:nth-child(3) {
+    transform: translateY(-11px) rotate(-45deg);
+}
